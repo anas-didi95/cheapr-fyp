@@ -1,2 +1,5 @@
 db/*
 proxy/*
+backend/static/*
+
+*.pyc
