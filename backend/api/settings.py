@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'faker',
     # models
     'supermarket',
+    'product',
 ]
 
 MIDDLEWARE = [
