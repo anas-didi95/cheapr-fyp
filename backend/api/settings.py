@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # models
     'supermarket',
     'product',
+    'price',
 ]
 
 MIDDLEWARE = [
