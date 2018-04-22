@@ -11,4 +11,5 @@
 - v0.7.1 - fix backend disallowed host completed
 - v0.7.2 - fix services structures completed
 - v0.7.3 - fix backend service not known completed
+- v0.7.4 - fix docker module not found completed
 
