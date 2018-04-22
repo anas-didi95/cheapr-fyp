@@ -16,7 +16,7 @@ services:
         volumes:
             - '/etc/passwd:/etc/passwd:ro'
             - '/etc/group:/etc/group:ro'
-            - './backend:/home/${DOCKER_USER_NAME}/code'
+            - './backend:/home/code'
         depends_on:
             - database
     
@@ -47,7 +47,7 @@ services:
         volumes:
             - '/etc/passwd:/etc/passwd:ro'
             - '/etc/group:/etc/group:ro'
-            - './frontend:/home/${DOCKER_USER_NAME}/code'
+            - './frontend:/home/code'
         depends_on:
             - backend
 
