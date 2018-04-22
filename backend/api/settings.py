@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 'localhost', 'cheapr.local', # local development 
+    '35.201.135.5', # deployment
 ]
 
 
