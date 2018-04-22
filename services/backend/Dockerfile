@@ -16,7 +16,7 @@ ENV DOCKER_USER_ID ${DOCKER_USER_ID:-0}
 ENV DOCKER_GROUP_ID ${DOCKER_GROUP_ID:-0}
 RUN echo "Create home directory for ${DOCKER_USER_NAME} with UID ${DOCKER_USER_ID}, GID ${DOCKER_GROUP_ID}" \
     ## Create directory
-    && mkdir -p /home/${DOCKER_USER_NAME}/code \
+    && mkdir -p /home/code \
     ## Set permission
-    && chown -R ${DOCKER_USER_ID}:${DOCKER_GROUP_ID} /home/${DOCKER_USER_NAME}/
-WORKDIR /home/${DOCKER_USER_NAME}/code
+    && chown -R ${DOCKER_USER_ID}:${DOCKER_GROUP_ID} /home/code
+WORKDIR /home/code
