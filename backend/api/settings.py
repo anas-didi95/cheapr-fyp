@@ -24,7 +24,9 @@ SECRET_KEY = '-_)2=ffz0p2f)8ov-e8-3#edxonkib0nt@_ux5e4lgo_24x4*x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1', 'localhost', 'cheapr.local', # local development 
+]
 
 
 # Application definition
