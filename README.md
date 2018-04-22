@@ -12,4 +12,5 @@
 - v0.7.2 - fix services structures completed
 - v0.7.3 - fix backend service not known completed
 - v0.7.4 - fix docker module not found completed
+- v0.7.5 - fix backend disallowed host deployment completed
 
