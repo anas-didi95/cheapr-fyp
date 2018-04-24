@@ -8,18 +8,17 @@
 </template>
 
 <script>
-import NavbarHeader from '@/components/NavbarHeader';
-import MainMenu from '@/components/MainMenu';
+import NavbarHeader from '@/components/NavbarHeader'
+import MainMenu from '@/components/MainMenu'
 export default {
-  name: "LeftPanel",
+  name: 'LeftPanel',
   components: {
     NavbarHeader,
-    MainMenu,
-  },
-};
+    MainMenu
+  }
+}
 </script>
 
 <style scoped>
 
 </style>
-

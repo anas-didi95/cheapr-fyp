@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import Header from '@/components/Header';
-import Breadcrumb from '@/components/Breadcrumb';
+import Header from '@/components/Header'
+import Breadcrumb from '@/components/Breadcrumb'
 export default {
   name: 'RightPanel',
   components: {
     Header,
-    Breadcrumb,
+    Breadcrumb
   }
 }
 </script>

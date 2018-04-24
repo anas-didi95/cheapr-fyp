@@ -47,7 +47,7 @@
 import UserAvatar from '@/assets/images/user.png'
 export default {
   name: 'Header',
-  data: function() {
+  data: function () {
     return {
       userAvatar: UserAvatar
     }

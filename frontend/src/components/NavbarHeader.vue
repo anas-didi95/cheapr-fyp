@@ -18,7 +18,7 @@ import ImageBrand from '@/assets/images/logo.png'
 import ImageBrandHidden from '@/assets/images/logo2.png'
 export default {
   name: 'NavbarHeader',
-  data: function() {
+  data: function () {
     return {
       imageBrand: ImageBrand,
       imageBrandHidden: ImageBrandHidden
@@ -29,5 +29,3 @@ export default {
 
 <style scoped>
 </style>
-
-

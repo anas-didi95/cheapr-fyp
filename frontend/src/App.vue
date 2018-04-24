@@ -6,13 +6,13 @@
 </template>
 
 <script>
-import LeftPanel from '@/containers/LeftPanel';
-import RightPanel from '@/containers/RightPanel';
+import LeftPanel from '@/containers/LeftPanel'
+import RightPanel from '@/containers/RightPanel'
 export default {
   name: 'App',
   components: {
     LeftPanel,
-    RightPanel,
+    RightPanel
   }
 }
 </script>
@@ -21,5 +21,5 @@ export default {
 #container {
   display: table;
   width: 100%;
-} 
+}
 </style>

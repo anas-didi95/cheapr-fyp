@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'Breadcrumb',
+  name: 'Breadcrumb'
 }
 </script>
 
