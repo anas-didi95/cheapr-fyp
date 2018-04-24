@@ -9,9 +9,13 @@ class Price(models.Model):
     max_digits=6,
     decimal_places=2,
   )
-  date_start = models.CharField(max_length=255)
-  date_end = models.CharField(max_length=255)
   description = models.CharField(max_length=255)
+  day_start = models.IntegerField(default=-1)
+  day_end = models.IntegerField(default=-1)
+  month_start = models.IntegerField(default=-1)
+  month_end = models.IntegerField(default=-1)
+  year_start = models.IntegerField(default=-1)
+  year_end = models.IntegerField(default=-1)
   date_created = models.DateTimeField(auto_now_add=True)
   date_updated = models.DateTimeField(auto_now=True)
   product = models.ForeignKey(
