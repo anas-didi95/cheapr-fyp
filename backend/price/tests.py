@@ -11,12 +11,16 @@ from .models import Price
 class ModelTestCase(TestCase):
   """Test suite for model Price"""
   faker = Faker()
-  price_value = 1.20
-  currency_value = 1.20
-  date_start = '18/04/15'
-  date_end = '18/04/15'
   description = faker.text()
   product_category = 'snack'
+  price_value = 1.20
+  currency_value = 1.20
+  day_start = 1
+  day_end = 31
+  month_start = 1
+  month_end = 1
+  year_start = 2000
+  year_end = 2000
 
   def setUp(self):
     self.supermarket = Supermarket.objects.create(
@@ -30,8 +34,12 @@ class ModelTestCase(TestCase):
     self.price = Price(
       price_value=self.price_value,
       currency_value=self.currency_value,
-      date_start=self.date_start,
-      date_end=self.date_end,
+      day_start=self.day_start,
+      day_end=self.day_end,
+      month_start=self.month_start,
+      month_end=self.month_end,
+      year_start=self.year_start,
+      year_end=self.year_end,
       description=self.description,
       product=self.product,
     )
@@ -42,9 +50,13 @@ class ModelTestCase(TestCase):
     Price.objects.create(
       price_value=self.price_value,
       currency_value=self.currency_value,
-      date_start=self.date_start,
-      date_end=self.date_end,
       description=self.description,
+      day_start=self.day_start,
+      day_end=self.day_end,
+      month_start=self.month_start,
+      month_end=self.month_end,
+      year_start=self.year_start,
+      year_end=self.year_end,
       product_id=self.product.id,
     )
     new_count = Price.objects.count()
@@ -54,8 +66,12 @@ class ModelTestCase(TestCase):
     price = Price.objects.get(
       price_value=self.price_value,
       currency_value=self.currency_value,
-      date_start=self.date_start,
-      date_end=self.date_end,
+      day_start=self.day_start,
+      day_end=self.day_end,
+      month_start=self.month_start,
+      month_end=self.month_end,
+      year_start=self.year_start,
+      year_end=self.year_end,
       description=self.description,
     )
     self.assertEqual(price.id, self.price.id)
@@ -80,12 +96,16 @@ class ViewTestCase(APITestCase):
   """Test suite for view Price"""
 
   faker = Faker()
-  price_value = 1.20
-  currency_value = 1.20
-  date_start = '18/04/15'
-  date_end = '18/04/15'
   description = faker.text()
   product_category = 'snack'
+  price_value = 1.20
+  currency_value = 1.20
+  day_start = 1
+  day_end = 31
+  month_start = 1
+  month_end = 1
+  year_start = 2000
+  year_end = 2000
   client = APIClient()
 
   def setUp(self):
@@ -100,10 +120,14 @@ class ViewTestCase(APITestCase):
     self.product_data = {
       'price_value':self.price_value,
       'currency_value':self.currency_value,
-      'date_start':self.date_start,
-      'date_end':self.date_end,
       'description':self.description,
       'product':self.product.id,
+      'day_start':self.day_start,
+      'day_end':self.day_end,
+      'month_start':self.month_start,
+      'month_end':self.month_end,
+      'year_start':self.year_start,
+      'year_end':self.year_end,
     }
     self.response = self.client.post(
       reverse('price.l-c'),
@@ -127,8 +151,6 @@ class ViewTestCase(APITestCase):
     price = Price.objects.get(
       price_value=self.price_value,
       currency_value=self.currency_value,
-      date_start=self.date_start,
-      date_end=self.date_end,
       description=self.description,
     )
     response = self.client.get(
@@ -143,8 +165,6 @@ class ViewTestCase(APITestCase):
     price = Price.objects.get(
       price_value=self.price_value,
       currency_value=self.currency_value,
-      date_start=self.date_start,
-      date_end=self.date_end,
       description=self.description,
     )
     price_new_data = {
@@ -164,8 +184,6 @@ class ViewTestCase(APITestCase):
     price = Price.objects.get(
       price_value=self.price_value,
       currency_value=self.currency_value,
-      date_start=self.date_start,
-      date_end=self.date_end,
       description=self.description,
     )
     response = self.client.delete(
