@@ -12,14 +12,11 @@ class ModelTestCase(TestCase):
   faker = Faker()
   product_name = faker.name()
   product_category = 'snack'
-  supermarket_name = faker.company()
 
   def setUp(self):
-    self.supermarket = Supermarket.objects.create(name=self.supermarket_name)
     self.product = Product(
       name=self.product_name,
       category=self.product_category,
-      supermarket=self.supermarket,
     )
     self.product.save()
 
@@ -28,7 +25,6 @@ class ModelTestCase(TestCase):
     Product.objects.create(
       name=self.faker.name(),
       category=self.product_category,
-      supermarket_id=self.supermarket.id,
     )
     new_count = Product.objects.count()
     self.assertNotEqual(old_count, new_count)
@@ -66,13 +62,9 @@ class ViewTestCase(APITestCase):
   client = APIClient()
 
   def setUp(self):
-    self.supermarket = Supermarket.objects.create(
-      name=self.faker.company()
-    )
     self.product_data = {
       'name':self.product_name,
       'category':self.product_category,
-      'supermarket':self.supermarket.name,
     }
     self.response = self.client.post(
       reverse('product.l-c'),
@@ -105,7 +97,6 @@ class ViewTestCase(APITestCase):
     product_new_data = {
       'name':self.faker.name(),
       'category':product.category,
-      'supermarket':product.supermarket.name,
     }
     response = self.client.patch(
       reverse('product.r-u-d', kwargs={'pk':product.id}),

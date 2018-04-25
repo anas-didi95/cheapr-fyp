@@ -29,7 +29,6 @@ class ModelTestCase(TestCase):
     self.product = Product.objects.create(
       name=self.faker.name(),
       category=self.product_category,
-      supermarket=self.supermarket,
     )
     self.price = Price(
       price_value=self.price_value,
@@ -42,6 +41,7 @@ class ModelTestCase(TestCase):
       year_end=self.year_end,
       description=self.description,
       product=self.product,
+      supermarket=self.supermarket,
     )
     self.price.save()
 
@@ -58,6 +58,7 @@ class ModelTestCase(TestCase):
       year_start=self.year_start,
       year_end=self.year_end,
       product_id=self.product.id,
+      supermarket_id=self.supermarket.id,
     )
     new_count = Price.objects.count()
     self.assertNotEqual(old_count, new_count)
@@ -115,19 +116,19 @@ class ViewTestCase(APITestCase):
     self.product = Product.objects.create(
       name=self.faker.name(),
       category=self.product_category,
-      supermarket=self.supermarket,
     )
     self.product_data = {
       'price_value':self.price_value,
       'currency_value':self.currency_value,
       'description':self.description,
-      'product':self.product.id,
       'day_start':self.day_start,
       'day_end':self.day_end,
       'month_start':self.month_start,
       'month_end':self.month_end,
       'year_start':self.year_start,
       'year_end':self.year_end,
+      'product':self.product.id,
+      'supermarket':self.supermarket.id,
     }
     self.response = self.client.post(
       reverse('price.l-c'),

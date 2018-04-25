@@ -17,10 +17,6 @@ class Product(models.Model):
     max_length=255, 
     choices=CATEGORY_CHOICES,
   )
-  supermarket = models.ForeignKey(
-    'supermarket.Supermarket',
-    on_delete=models.CASCADE,
-  )
   date_created = models.DateTimeField(
     auto_now_add=True,
   )

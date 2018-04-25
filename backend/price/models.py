@@ -22,3 +22,11 @@ class Price(models.Model):
     'product.Product',
     on_delete=models.CASCADE
   )
+  supermarket = models.ForeignKey(
+    'supermarket.Supermarket',
+    on_delete=models.CASCADE,
+    default='1',
+  )
+
+  def __str__(self):
+    return '%s | %s | %s' % (self.supermarket.name, self.product.name, self.description)
