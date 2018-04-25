@@ -18,6 +18,7 @@ class PriceSerializer(serializers.ModelSerializer):
       'year_end',
       'description',
       'product',
+      'supermarket',
       'date_created',
       'date_updated',
     )
