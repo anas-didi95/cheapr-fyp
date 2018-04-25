@@ -3,7 +3,7 @@
   <Header></Header>
   <Breadcrumb :text='breadcrumb'></Breadcrumb>
   <div class="content mt-3">
-    <ProductList></ProductList>
+    <ProductDetails></ProductDetails>
   </div>
 </div>
 
@@ -13,16 +13,18 @@
 import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
 import ProductList  from '@/views/ProductList'
+import ProductDetails from '@/views/ProductDetails'
 export default {
   name: 'RightPanel',
   components: {
     Header,
     Breadcrumb,
-    ProductList
+    ProductList,
+    ProductDetails
   },
   data: function () {
     return {
-      breadcrumb: 'Product List'
+      breadcrumb: 'Product Details'
     }
   }
 }
