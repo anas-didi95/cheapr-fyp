@@ -3,7 +3,7 @@
   <div class="col-sm-4">
     <div class="page-header float-left">
       <div class="page-title">
-        <h1>Dashboard</h1>
+        <h1>Product</h1>
       </div>
     </div>
   </div>
@@ -11,7 +11,7 @@
     <div class="page-header float-right">
       <div class="page-title">
         <ol class="breadcrumb text-right">
-          <li class="active">Dashboard</li>
+          <li class="active">{{ text }}</li>
         </ol>
       </div>
     </div>
@@ -21,7 +21,13 @@
 
 <script>
 export default {
-  name: 'Breadcrumb'
+  name: 'Breadcrumb',
+  props: ['text'],
+  data: function () {
+    return {
+      breadcrumb: this.text
+    }
+  }
 }
 </script>
 
