@@ -3,16 +3,22 @@
   <div class="col-sm-4">
     <div class="page-header float-left">
       <div class="page-title">
-        <h1>Product</h1>
+        <h1>
+          <router-link v-if="this.$route.meta.breadcrumb.hasPrevious" :to="{name: this.$route.meta.breadcrumb.previous.name}">
+            <i class="fa fa-arrow-left"></i> Go back
+          </router-link>
+        </h1>
       </div>
     </div>
   </div>
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="page-header float-right">
       <div class="page-title">
-        <ol class="breadcrumb text-right">
-          <li class="active">{{ text }}</li>
-        </ol>
+        <h1>
+          <router-link v-if="this.$route.meta.breadcrumb.hasNext" :to="{name: this.$route.meta.breadcrumb.previous.name}">
+            <i class="fa fa-arrow-right"></i> Next
+          </router-link>
+        </h1>
       </div>
     </div>
   </div>
