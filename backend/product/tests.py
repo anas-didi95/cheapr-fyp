@@ -121,3 +121,11 @@ class ViewTestCase(APITestCase):
     )
     self.assertEqual(response.status_code, status.HTTP_200_OK)
     self.assertContains(response, self.product_name)
+
+  def testViewProductSearchName(self):
+    response = self.client.get(
+      '%s?name=%s' % (reverse('product-search.l'), self.product_name[:3]),
+      format='json'
+    )
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    self.assertContains(response, self.product_name)
