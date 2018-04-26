@@ -1,6 +1,7 @@
 db/*
 proxy/*
 backend/static/*
+frontend/dist/*
 
 *.pyc
 tilix-workspace.*
