@@ -15,6 +15,7 @@
       <a href="#">
         <small>Giant</small>
       </a>
+      <a href="#">
         <small>Tesco</small>
       </a>
       <a href="#">
