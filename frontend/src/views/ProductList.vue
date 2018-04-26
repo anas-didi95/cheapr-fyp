@@ -38,34 +38,7 @@ export default {
   data: function () {
     return {
       title: '',
-      items: [
-        {
-          "id": 1,
-          "name": "100 Plus Isotonic Drink",
-          "category": "Drink",
-          "category_name": "Drink",
-          "date_created": "2018-04-25T21:05:22.482223Z",
-          "date_updated": "2018-04-25T21:05:22.482259Z"
-        },
-        {
-          "id": 2,
-          "name": "A&W Cream Soda",
-          "category": "Drink",
-          "category_name": "Drink",
-          "date_created": "2018-04-25T21:05:22.500922Z",
-          "date_updated": "2018-04-25T21:05:22.500959Z"
-        },
-        {
-          "id": 3,
-          "name": "A1 Sardine In Tomato Sauce",
-          "category": "Ingredient",
-          "category_name": "Ingredient",
-          "date_created": "2018-04-25T21:05:22.521063Z",
-          "date_updated": "2018-04-25T21:05:22.521089Z"
-        }
-      ],
-      displayItems: [],
-      search: ''
+      items
     }
   },
   computed: {
