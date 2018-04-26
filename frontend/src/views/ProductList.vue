@@ -19,7 +19,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-4 col-6" v-for="item in searchItem" :key='item.id'>
+    <div class="col-12 text-center" v-if="this.loadingAjax">
+      <img :src="loadingImg" alt="Loading...">
+    </div>
+    <div class="col-sm-4 col-6" v-else v-for="item in searchItem" :key='item.id'>
       <router-link :to="{name: 'product-details', params: {id: item.id} }">
         <ItemCard :item='item'></ItemCard>
       </router-link>
@@ -29,6 +32,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import loadingImg from '@/assets/ajax-loader.gif'
 import ItemCard from '@/components/ItemCard'
 export default {
   name: 'ProductList',
@@ -38,34 +43,21 @@ export default {
   data: function () {
     return {
       title: '',
-      items: [
-        {
-          "id": 1,
-          "name": "100 Plus Isotonic Drink",
-          "category": "Drink",
-          "category_name": "Drink",
-          "date_created": "2018-04-25T21:05:22.482223Z",
-          "date_updated": "2018-04-25T21:05:22.482259Z"
-        },
-        {
-          "id": 2,
-          "name": "A&W Cream Soda",
-          "category": "Drink",
-          "category_name": "Drink",
-          "date_created": "2018-04-25T21:05:22.500922Z",
-          "date_updated": "2018-04-25T21:05:22.500959Z"
-        },
-        {
-          "id": 3,
-          "name": "A1 Sardine In Tomato Sauce",
-          "category": "Ingredient",
-          "category_name": "Ingredient",
-          "date_created": "2018-04-25T21:05:22.521063Z",
-          "date_updated": "2018-04-25T21:05:22.521089Z"
-        }
-      ],
-      displayItems: [],
-      search: ''
+      items: [],
+      search: '',
+      loadingAjax: false,
+      loadingImg: loadingImg
+    }
+  },
+  methods: {
+    getProducts: function () {
+      this.loadingAjax = true
+      axios.get('http://localhost:8000/product/')
+        .then((response) => {
+          console.log(response.statusText)
+          this.items = response.data
+          this.loadingAjax = false
+        })
     }
   },
   computed: {
@@ -75,6 +67,9 @@ export default {
         return item.name.toLowerCase().indexOf(search) !== -1
       })
     }
+  },
+  created () {
+    this.getProducts()
   },
   mounted () {
     this.title = this.$route.meta.breadcrumb.name
