@@ -1,7 +1,7 @@
 <template>
 <div id="right-panel" class="right-panel">
   <Header :title='title'></Header>
-  <Breadcrumb :text='breadcrumb'></Breadcrumb>
+  <Breadcrumb></Breadcrumb>
   <div class="content mt-3">
     <router-view></router-view>
   </div>
