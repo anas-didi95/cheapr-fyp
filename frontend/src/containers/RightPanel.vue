@@ -1,9 +1,9 @@
 <template>
 <div id="right-panel" class="right-panel">
-  <Header></Header>
+  <Header :title='title'></Header>
   <Breadcrumb :text='breadcrumb'></Breadcrumb>
   <div class="content mt-3">
-    <ProductDetails></ProductDetails>
+    <router-view></router-view>
   </div>
 </div>
 
@@ -12,20 +12,24 @@
 <script>
 import Header from '@/components/Header'
 import Breadcrumb from '@/components/Breadcrumb'
-import ProductList  from '@/views/ProductList'
-import ProductDetails from '@/views/ProductDetails'
 export default {
   name: 'RightPanel',
   components: {
     Header,
-    Breadcrumb,
-    ProductList,
-    ProductDetails
+    Breadcrumb
   },
   data: function () {
     return {
-      breadcrumb: 'Product Details'
+      title: ''
     }
+  },
+  watch: {
+    '$route' () {
+      this.title = this.$route.meta.breadcrumb.title
+    }
+  },
+  mounted () {
+    this.title = this.$route.meta.breadcrumb.title
   }
 }
 </script>
