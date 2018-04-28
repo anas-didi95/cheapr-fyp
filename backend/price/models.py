@@ -20,7 +20,8 @@ class Price(models.Model):
   date_updated = models.DateTimeField(auto_now=True)
   product = models.ForeignKey(
     'product.Product',
-    on_delete=models.CASCADE
+    on_delete=models.CASCADE,
+    related_name='prices',
   )
   supermarket = models.ForeignKey(
     'supermarket.Supermarket',
