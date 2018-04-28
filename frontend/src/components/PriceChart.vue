@@ -1,30 +1,12 @@
-<template>
-<div class="card">
-  <div class="card-header">
-    <strong class="card-title mb-3">Price Comparison</strong>
-  </div>
-  <div class="card-body">
-    <canvas id="chartId"></canvas>
-  </div>
-</div>
-</template>
-
 <script>
+import { Line, mixins } from 'vue-chartjs'
 export default {
+  extends: Line,
   name: 'PriceChart',
-  props: ['data', 'options'],
+  mixins: [mixins.reactiveProp],
+  props: ['chartData', 'options'],
   mounted () {
-    let ctx = document.getElementById('chartId')
-    let chartPrice = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: this.data.labels,
-        datasets: this.data.datasets
-      }
-    })
+    this.renderChart(this.chartData)
   }
 }
 </script>
-
-<style>
-</style>
