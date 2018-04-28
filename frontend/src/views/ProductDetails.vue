@@ -10,7 +10,14 @@
    </div>
    <div class="row">
      <div class="col-sm-8">
-       <price-chart :data='chartdata'></price-chart>
+       <div class="card">
+         <div class="card-header">
+           Price Comparison
+         </div>
+         <div class="card-body">
+          <price-chart v-if='item' :chartData='chartdata'></price-chart>
+         </div>
+       </div>
      </div>
    </div>
  </div> 
@@ -34,10 +41,10 @@ export default {
       loadingAjax: false,
       loadingImg: loadingImg,
       chartdata: {
-        labels: ['', '', '', '', '', '', '', '', ''],
+        labels: [],
         datasets: [
           {
-            data: [10, 20, 30],
+            data: [],
             label: 'EconSave',
             borderColor: 'rgba(0,103,255,0.5)',
             borderWidth: 3.5,
@@ -47,8 +54,8 @@ export default {
             pointBackgroundColor: 'rgba(0,0,255,0.5)',
           },
           {
-            data: [30, 20, 10],
-            label: 'Giant',
+            data: [],
+            label: 'Tesco',
             borderColor: 'rgba(0,255,0,0.5)',
             borderWidth: 3.5,
             pointStyle: 'circle',
@@ -57,8 +64,8 @@ export default {
             pointBackgroundColor: 'rgba(0,255,0,0.5)',
           },
           {
-            data: [20, 10, 30],
-            label: 'Tesco',
+            data: [],
+            label: 'Giant',
             pointBackgroundColor: 'rgba(255,0,0,0.5)',
             backgroundColor: 'rgba(255,0,0,0.5)'
           }
@@ -68,42 +75,32 @@ export default {
   },
   methods: {
     getProduct: function() {
+      this.loadingAjax = true
       axios.get('http://localhost:8000/product/'+this.$route.params.id)
         .then((response) => {
+          console.log(response)
+          this.prepareChart(response.data.prices)
           this.item = response.data
           this.loadingAjax = false
         })  
     },
-    generateChart: function () {
-      var ctx = document.getElementById('price-chart')
-      console.log()
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [ "2010", "2011", "2012", "2013", "2014", "2015", "2016" ],
-            type: 'line',
-            defaultFontFamily: 'Montserrat',
-            datasets: [ {
-                data: [ 0, 7, 3, 5, 2, 10, 7 ],
-                label: "Expense",
-                backgroundColor: 'rgba(0,103,255,.15)',
-                borderColor: 'rgba(0,103,255,0.5)',
-                borderWidth: 3.5,
-                pointStyle: 'circle',
-                pointRadius: 5,
-                pointBorderColor: 'transparent',
-                pointBackgroundColor: 'rgba(0,103,255,0.5)',
-                }, 
-             ]
-        },
-      })
-    },
+    prepareChart: function(prices) {
+      console.log(prices)
+      for (let i = 0; i < prices.length && i < 15; i++) {
+        let day = prices[i].day_start
+        let month = prices[i].month_start
+        let year = prices[i].year_start
+        let dataset_id = prices[i].supermarket
+        let dataset_price = parseFloat(prices[i].price_value)
+        let date = `${day}/${month}/${year}`
+        if (!this.chartdata.labels.includes(date))
+          this.chartdata.labels.push(`${day}/${month}/${year}`)
+        this.chartdata.datasets[dataset_id-1].data.push(dataset_price)
+      }
+    }
   },
   created () {
     this.getProduct()
-  },
-  mounted () {
-    this.generateChart()
   }
 }
 </script>
