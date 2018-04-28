@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from price.serializers import PriceSerializer
 from .models import Product
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -7,6 +8,7 @@ class ProductSerializer(serializers.ModelSerializer):
     source='get_category_display',
     read_only=True,
   )
+  prices = PriceSerializer(many=True, read_only=True)
 
   class Meta:
     model = Product
@@ -15,10 +17,12 @@ class ProductSerializer(serializers.ModelSerializer):
       'name',
       'category',
       'category_name',
+      'prices',
       'date_created',
       'date_updated',
     )
     read_only_fields = (
+      'prices',
       'date_created',
       'date_updated',
     )
