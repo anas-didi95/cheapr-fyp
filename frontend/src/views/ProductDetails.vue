@@ -1,7 +1,10 @@
 <template>
  <div>
    <div class="row">
-     <div class="col-sm-4 offset-sm-4">
+     <div class="col-sm-4 offset-sm-4" v-if='loadingAjax'>
+       <img :src="loadingImg" alt="Loading...">
+     </div>
+     <div class="col-sm-4 offset-sm-4" v-else>
        <ItemCard :item='item'></ItemCard>
      </div>
    </div>
@@ -14,6 +17,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import loadingImg from '@/assets/ajax-loader.gif'
 import ItemCard from '@/components/ItemCard'
 import PriceChart from '@/components/PriceChart'
 export default {
@@ -24,16 +29,12 @@ export default {
   },
   data: function () {
     return {
-      item: {
-        "id": 1,
-        "name": "100 Plus Isotonic Drink",
-        "category": "Drink",
-        "category_name": "Drink",
-        "date_created": "2018-04-25T21:05:22.482223Z",
-        "date_updated": "2018-04-25T21:05:22.482259Z"
-      },
+      title: '',
+      item: null,
+      loadingAjax: false,
+      loadingImg: loadingImg,
       chartdata: {
-        labels: ['', '', '', ''],
+        labels: ['', '', '', '', '', '', '', '', ''],
         datasets: [
           {
             data: [10, 20, 30],
@@ -65,10 +66,14 @@ export default {
       }
     }
   },
-  mounted () {
-    this.generateChart()
-  },
   methods: {
+    getProduct: function() {
+      axios.get('http://localhost:8000/product/'+this.$route.params.id)
+        .then((response) => {
+          this.item = response.data
+          this.loadingAjax = false
+        })  
+    },
     generateChart: function () {
       var ctx = document.getElementById('price-chart')
       console.log()
@@ -92,7 +97,13 @@ export default {
              ]
         },
       })
-    }
+    },
+  },
+  created () {
+    this.getProduct()
+  },
+  mounted () {
+    this.generateChart()
   }
 }
 </script>
