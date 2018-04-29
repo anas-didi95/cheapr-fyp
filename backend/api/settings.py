@@ -30,7 +30,8 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    'localhost:8080', 'cheapr.local:8080'
+    'localhost:8080', 'cheapr.local:8080',
+    '35.201.135.5', '0.0.0.0',
 )
 
 
