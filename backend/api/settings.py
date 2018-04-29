@@ -29,11 +29,7 @@ ALLOWED_HOSTS = [
     '35.201.135.5', # deployment
 ]
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:8080', 'cheapr.local:8080',
-    '35.201.135.5', '0.0.0.0',
-)
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
