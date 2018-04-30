@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 'localhost', 'cheapr.local', # local development 
-    '35.201.135.5', # deployment
+    '35.189.162.214', # deployment
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
