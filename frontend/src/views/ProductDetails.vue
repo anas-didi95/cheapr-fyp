@@ -75,8 +75,9 @@ export default {
   },
   methods: {
     getProduct: function() {
+      let api = process.env.API;
       this.loadingAjax = true
-      axios.get('http://localhost:8000/product/'+this.$route.params.id)
+      axios.get(`${api}/product/${this.$route.params.id}`)
         .then((response) => {
           console.log(response)
           this.prepareChart(response.data.prices)
