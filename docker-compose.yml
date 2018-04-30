@@ -10,7 +10,7 @@ services:
                 DOCKER_GROUP_ID: ${DOCKER_GROUP_ID}
         user: ${DOCKER_USER_ID}:${DOCKER_GROUP_ID}
         tty: true
-        command: ['gunicorn','api.wsgi','-b 0.0.0.0:8000','-w 4','--reload']
+        command: gunicorn --config=gunicorn.config.py api.wsgi
         # ports:
             # - '8000:8000'
         volumes:
