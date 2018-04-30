@@ -51,8 +51,9 @@ export default {
   },
   methods: {
     getProducts: function () {
+      let api = process.env.API;
       this.loadingAjax = true
-      axios.get('http://localhost:8000/product/')
+      axios.get(`${api}/product/`)
         .then((response) => {
           console.log(response.statusText)
           this.items = response.data
