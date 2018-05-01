@@ -28,12 +28,6 @@
   <div class="col-12 text-center" v-if="this.loadingAjax">
     <img :src="loadingImg" alt="Loading...">
   </div>
-  <!-- <div class="row"> -->
-    <!-- <div class="col-12 text-center clearfix"> -->
-      <!-- <button v-if="this.previous" class="btn btn-primary" style="margin:5px" @click='getProducts("hello")'> << </button> -->
-      <!-- <button v-if="this.next" class="btn btn-primary" style="margin:5px" @click='getNextProducts'> >> </button> -->
-    <!-- </div> -->
-  <!-- </div> -->
 </div>
 </template>
 
@@ -54,7 +48,7 @@ export default {
       next: `${process.env.API}/product/`,
       loadingAjax: false,
       loadingImg: loadingImg,
-      bottom: false,
+      bottom: false
     }
   },
   methods: {
@@ -62,7 +56,7 @@ export default {
       const scrollY = window.scrollY
       const visible = document.documentElement.clientHeight
       const pageHeight = document.documentElement.scrollHeight
-      const bottomOfPage = visible+scrollY >= pageHeight
+      const bottomOfPage = visible + scrollY >= pageHeight
       return bottomOfPage || pageHeight < visible
     },
     getProducts: function () {
@@ -72,14 +66,14 @@ export default {
           .then((response) => {
             console.log(response.statusText)
             let items = response.data.results
-            items.forEach(item => { 
+            items.forEach(item => {
               this.items.push(item)
             })
             this.next = response.data.next
             this.loadingAjax = false
           })
       }
-   }
+    }
   },
   watch: {
     bottom: function (isBottom) {
