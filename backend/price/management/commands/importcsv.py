@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 import csv
-from random import random
+from random import random, randint
 from supermarket.models import Supermarket
 from product.models import Product
 from price.models import Price
@@ -42,7 +42,9 @@ class Command(BaseCommand):
         if 'supermarket' in kwargs:
           if supermarket != kwargs['supermarket']:
             supermarket = kwargs['supermarket']
-            price = float(price) + random()
+            op = randint(0,1)
+            price = float(price)+random() if (op==1) else float(price)-random()
+            # price = (op == 0 ? float(price)+random() : float(price)-random()) 
         supermarket_obj, _ = Supermarket.objects.get_or_create(
           name=supermarket
         )
