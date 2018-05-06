@@ -17,7 +17,8 @@ class ListFilterView(generics.ListAPIView):
     queryset = Price.objects.all()
     query_product = self.request.query_params.get('product')
     query_supermarket = self.request.query_params.get('supermarket')
-    queryset = queryset.filter(
-      product_id=query_product,
-      supermarket_id=query_supermarket)
+    if query_product is not None:
+      queryset = queryset.filter(product_id=query_product)
+    if query_supermarket is not None:
+      queryset = queryset.filter(supermarket_id=query_supermarket)
     return queryset
