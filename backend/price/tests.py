@@ -181,7 +181,7 @@ class ViewTestCase(APITestCase):
     self.assertContains(response, price_new_data['price_value'])
     self.assertContains(response, price_new_data['description'])
 
-  def testViewProductDestroy(self):
+  def testViewPriceDestroy(self):
     price = Price.objects.get(
       price_value=self.price_value,
       currency_value=self.currency_value,
@@ -192,4 +192,12 @@ class ViewTestCase(APITestCase):
       format='json',
     )
     self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+  def testViewPriceFilterByProductSupermarket(self):
+    response = self.client.get(
+      '%s?product=%s&supermarket=%s' % (reverse('price-filter.l'), self.product.id, self.supermarket.id),
+      format='json',
+    )
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    self.assertContains(response, self.product.id)
  
