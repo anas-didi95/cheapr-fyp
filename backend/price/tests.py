@@ -200,4 +200,12 @@ class ViewTestCase(APITestCase):
     )
     self.assertEqual(response.status_code, status.HTTP_200_OK)
     self.assertContains(response, self.product.id)
+
+  def testViewPriceFilterByProduct(self):
+    response = self.client.get(
+      '%s?product=%s' % (reverse('price-filter.l'), self.product.id),
+      format='json',
+    )
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    self.assertContains(response, self.product.id)
  
