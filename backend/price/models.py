@@ -26,11 +26,12 @@ class Price(models.Model):
   supermarket = models.ForeignKey(
     'supermarket.Supermarket',
     on_delete=models.CASCADE,
+    related_name='prices',
     default='1',
   )
 
   class Meta:
-    ordering = ['-year_start', '-month_start', '-day_start']
+    ordering = ['-year_start', '-month_start', '-day_start', '-description']
 
   def __str__(self):
     return '%s | %s | %s' % (self.supermarket.name, self.product.name, self.description)
