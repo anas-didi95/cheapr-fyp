@@ -2,7 +2,7 @@
 <div>
   <div id="logo" class="text-center">
     <h1>Cheapr</h1>
-    <p>.:: Product Analyzer ::.</p>
+    <p>.:: Product Comparison ::.</p>
   </div>
 </div>
 </template>
