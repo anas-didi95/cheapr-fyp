@@ -17,6 +17,11 @@ class Product(models.Model):
     max_length=255, 
     choices=CATEGORY_CHOICES,
   )
+  thumbnail = models.ImageField(
+    upload_to='thumbnails/',
+    blank=True,
+    default=''
+  )
   date_created = models.DateTimeField(
     auto_now_add=True,
   )

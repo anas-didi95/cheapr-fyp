@@ -3,7 +3,7 @@
   <div class="img-big-wrap">
     <div>
       <a href="#">
-        <img src="" alt="Image not available...">
+        <img :src='src' alt="Image not available..." class="img-fluid">
       </a>
     </div>
   </div>
@@ -12,7 +12,13 @@
 
 <script>
 export default {
-  name: 'ProductImage'
+  name: 'ProductImage',
+  props: ['product'],
+  data: function () {
+    return {
+      src: this.product.thumbnail
+    }
+  }
 }
 </script>
 

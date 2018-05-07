@@ -1,14 +1,14 @@
 <template>
 <div class="productbox">
-  <img src="http://placehold.it/460x250/e67e22/ffffff&text=HTML5" class="img-fluid">
-  <div class="producttitle">{{ item.name }}</div>
+  <img :src='src' alt="Image not available..." class="img-fluid">
+  <div class="producttitle">{{ product.name }}</div>
   <div class="productprice">
     <div class="pull-right">
-      <router-link :to='{name: "product-details", params: {id: item.id} }' class="btn btn-danger">
+      <router-link :to='{name: "product-details", params: {id: product.id} }' class="btn btn-danger">
         <span>View</span>
       </router-link>
     </div>
-    <div class="pricetext">{{ item.category }}</div>
+    <div class="pricetext">{{ product.category }}</div>
   </div>
 </div>
 </template>
@@ -16,7 +16,12 @@
 <script>
 export default {
   name: 'ProductBox',
-  props: ['item']
+  props: ['product'],
+  data: function () {
+    return {
+      src: this.product.thumbnail
+    }
+  }
 }
 </script>
 

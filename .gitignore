@@ -1,6 +1,7 @@
 db/*
 proxy/*
 backend/static/*
+backend/media/*
 frontend/dist/*
 
 *.pyc

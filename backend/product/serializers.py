@@ -16,6 +16,7 @@ class ProductSerializer(serializers.ModelSerializer):
       'name',
       'category',
       'category_name',
+      'thumbnail',
       'date_created',
       'date_updated',
     )
