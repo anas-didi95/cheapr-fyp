@@ -5,3 +5,4 @@ gunicorn
 gevent
 faker
 psycopg2-binary
+Pillow
