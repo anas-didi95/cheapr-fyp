@@ -40,8 +40,8 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-4 col-xs-6" v-for='item in items' :key='item.id'>
-      <ProductBox :item='item'/>
+    <div class="col-md-4 col-xs-6" v-for='product in products' :key='product.id'>
+      <ProductBox :product='product'/>
     </div>
     <div class="col-12 text-center" v-if='this.loadingAjax'>
       <img :src='loadingImg' alt="Loading..."/>
@@ -66,7 +66,7 @@ export default {
   data: function () {
     return {
       bottom: false,
-      items: [],
+      products: [],
       loadingAjax: false,
       loadingImg: loadingImg,
       next: null,
@@ -89,9 +89,9 @@ export default {
         axios.get(url)
           .then((response) => {
             console.log(response.statusText)
-            let items = response.data.results
-            items.forEach(item => {
-              this.items.push(item)
+            let products = response.data.results
+            products.forEach(product => {
+              this.products.push(product)
             })
             this.next = response.data.next
             this.loadingAjax = false
@@ -100,12 +100,12 @@ export default {
     },
     getProductsByName: function () {
       let url = `${process.env.API}/product/search?name=${this.search_name}`
-      this.items = []
+      this.products = []
       this.getProducts(url)
     },
     getProductsByCategory: function () {
       let url = `${process.env.API}/product/search?category=${this.search_category}`
-      this.items = []
+      this.products = []
       this.getProducts(url)
     }
   },
