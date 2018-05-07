@@ -14,12 +14,12 @@
         <div class="form-group">
           <select class="form-control" v-model='search_category' @click='getProductsByCategory()'>
             <option disabled value="">.. Please select one ..</option>
-            <option>Snack</option>
-            <option>Drink</option>
-            <option>Ingredient</option>
-            <option>Fresh food</option>
-            <option>Household</option>
-            <option>Toiletries</option>
+            <option value="snack">Snack</option>
+            <option value="drink">Drink</option>
+            <option value="ingredient">Ingredient</option>
+            <option value="fresh">Fresh food</option>
+            <option value="house">Household</option>
+            <option value="toilet">Toiletries</option>
           </select>
         </div>
       </form>
