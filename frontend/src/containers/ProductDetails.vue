@@ -12,7 +12,7 @@
   <div class="card" v-if='this.product'>
     <div class="row">
       <aside class="col-sm-5 border-right">
-        <ProductImage/>
+        <ProductImage :product='product'/>
       </aside>
       <aside class="col-sm-7">
         <ProductInfo :product='product' :supermarkets='supermarkets' :prices='prices' :loadingAjax='loadingAjax'/>
