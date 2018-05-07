@@ -8,7 +8,7 @@
         <span>View</span>
       </router-link>
     </div>
-    <div class="pricetext">{{ product.category }}</div>
+    <div class="pricetext">{{ product.category_name }}</div>
   </div>
 </div>
 </template>
