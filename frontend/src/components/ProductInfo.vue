@@ -16,6 +16,10 @@
     </dd>
   </dl>
   <dl class="param param-feature">
+    <dt>Category</dt>
+    <dd>{{ product.category_name }}</dd>
+  </dl>
+  <dl class="param param-feature">
     <dt>Latest update</dt>
     <dd>{{ this.latest_update }}</dd>
   </dl>
