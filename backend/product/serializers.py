@@ -24,3 +24,28 @@ class ProductSerializer(serializers.ModelSerializer):
       'date_created',
       'date_updated',
     )
+
+class ProductPriceSerializer(serializers.ModelSerializer):
+  """Serialize model Product into JSON format with Price model"""
+  category_name = serializers.CharField(
+    source='get_category_display',
+    read_only=True,
+  )
+  prices = PriceSerializer(many=True, read_only=True)
+
+  class Meta:
+    model = Product
+    fields = (
+      'id',
+      'name',
+      'category',
+      'category_name',
+      'thumbnail',
+      'prices',
+      'date_created',
+      'date_updated',
+    )
+    read_only_fields = (
+      'date_created',
+      'date_updated'
+    )
