@@ -3,6 +3,10 @@ from .models import Price
 
 class PriceSerializer(serializers.ModelSerializer):
   """Serialize model Price into JSON format"""
+  supermarket = serializers.SlugRelatedField(
+    read_only=True,
+    slug_field='name',
+  )
   
   class Meta:
     model = Price
