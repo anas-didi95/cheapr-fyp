@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 class Price(models.Model):
   price_value = models.DecimalField(
@@ -35,3 +36,19 @@ class Price(models.Model):
 
   def __str__(self):
     return '%s | %s | %s' % (self.supermarket.name, self.product.name, self.description)
+
+class PriceAdmin(admin.ModelAdmin):
+  list_display = (
+    'product',
+    'supermarket',
+    'description',
+    'date_updated',
+  )
+
+  list_filter = (
+    'supermarket',
+  )
+
+  search_fields = [
+    'product__name',
+  ]
