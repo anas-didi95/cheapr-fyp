@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 class Product(models.Model):
   CATEGORY_CHOICES = (
@@ -31,3 +32,18 @@ class Product(models.Model):
 
   def __str__(self):
     return '%s' % (self.name)
+
+class ProductAdmin(admin.ModelAdmin):
+  list_display = (
+    'name',
+    'category',
+    'date_updated',
+  )
+
+  list_filter = (
+    'category',
+  )
+
+  search_fields = [
+    'name',
+  ]
