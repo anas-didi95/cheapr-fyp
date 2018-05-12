@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 class Supermarket(models.Model):
   """Model for Supermarket"""
@@ -8,3 +9,10 @@ class Supermarket(models.Model):
 
   def __str__(self):
     return '%s' % (self.name);
+
+class SupermarketAdmin(admin.ModelAdmin):
+  list_display = (
+    'name',
+    'date_created',
+    'date_updated'
+  )
