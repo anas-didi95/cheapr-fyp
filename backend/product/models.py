@@ -30,6 +30,9 @@ class Product(models.Model):
     auto_now=True,
   )
 
+  class Meta:
+    ordering = ['name',]
+
   def __str__(self):
     return '%s' % (self.name)
 
