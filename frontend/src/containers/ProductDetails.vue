@@ -71,7 +71,7 @@ export default {
         let datas = response.data.results
         this.supermarkets.forEach(supermarket => {
           let price = datas.filter(data => {
-            return supermarket.id == data.supermarket
+            return supermarket.name == data.supermarket
           })
           let obj = {}
           obj['name'] = supermarket.name
